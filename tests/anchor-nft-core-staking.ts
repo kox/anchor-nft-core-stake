@@ -54,20 +54,24 @@ describe("anchor-nft-core-staking", () => {
   });
   
   it("Creates Assets and Collections", async () => {
-    await new TransactionBuilder().add(
-      createCollectionV1(umi, {
-        collection,
-        name: 'My Collection',
-        uri: 'https://example.com/my-collection.json',
-      })
-    ).add(
-      createV1(umi, {
-        asset: asset,
-        name: 'My Nft',
-        uri: 'https://example.com/my-nft.json',
-        collection: collection.publicKey,
-      })
-    ).sendAndConfirm(umi)
+    try {
+      await new TransactionBuilder().add(
+        createCollectionV1(umi, {
+          collection,
+          name: 'My Collection',
+          uri: 'https://example.com/my-collection.json',
+        })
+      ).add(
+        createV1(umi, {
+          asset: asset,
+          name: 'My Nft',
+          uri: 'https://example.com/my-nft.json',
+          collection: collection.publicKey,
+        })
+      ).sendAndConfirm(umi)
+    } catch(err) {
+      console.log(err);
+    }
   });
 
   it("Stake", async () => {

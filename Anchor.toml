@@ -11,8 +11,13 @@ anchor_nft_core_staking = "CyhusoJP7Po7z8JHdyfhYN58kG1DH9Vmun16ibpiCfBz"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Devnet"
-wallet = "~/.config/solana/id.json"
+cluster = "localnet"                    # The cluster used for all commands.
+wallet = "~/.config/solana/id.json"     # The keypair used for all commands.
+
+
+# [provider.devnet]
+# cluster = "Devnet"
+# wallet = "~/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
